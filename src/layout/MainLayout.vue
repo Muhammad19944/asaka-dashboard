@@ -1,27 +1,14 @@
 <template>
   <Application>
-    <n-layout class="main-layout">
-      <n-layout has-sider>
-        <n-layout-sider
-          bordered
-          show-trigger
-          collapse-mode="width"
-          :collapsed-width="64"
-          :width="240"
-          :native-scrollbar="false"
-          :inverted="inverted"
-        >
-          <n-menu
-            :inverted="inverted"
-            :collapsed-width="64"
-            :collapsed-icon-size="22"
-            :options="menuOptions"
-          />
-        </n-layout-sider>
+    <n-layout has-sider class="h-screen">
+      <the-sidebar />
 
-        <n-layout>
-          <router-view />
-        </n-layout>
+      <n-layout>
+        <the-toolbar />
+
+        <n-layout-content class="disable-layout-content-overflow">
+          <router-view class="app-router-view py-3 pl-6 overflow-x-auto" />
+        </n-layout-content>
       </n-layout>
     </n-layout>
   </Application>
@@ -29,31 +16,13 @@
 
 <script setup>
 import Application from "@/components/Application.vue"
-import { ref } from "vue"
-import { NLayout, NLayoutSider, NMenu } from "naive-ui";
-
-const inverted = ref(false)
-
-const menuOptions = [
-  {
-    label: 'Hear the Wind Sing',
-    key: 'hear-the-wind-sing',
-  },
-  {
-    label: 'Pinball 1973',
-    key: 'pinball-1973',
-    children: [
-      {
-        label: 'Rat',
-        key: 'rat'
-      }
-    ]
-  },
-]
+import TheSidebar from "@/components/TheSidebar.vue"
+import TheToolbar from "@/components/TheToolbar.vue"
+import { NLayout, NLayoutContent } from "naive-ui"
 </script>
 
 <style>
-.main-layout {
-  height: 100vh;
+.app-router-view {
+  height: calc(100vh - 56px);
 }
 </style>

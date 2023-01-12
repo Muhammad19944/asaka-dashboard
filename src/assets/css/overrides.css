@@ -1,0 +1,5 @@
+
+.disable-layout-content-overflow > .n-layout-scroll-container {
+  height: auto !important;
+  overflow: visible !important;
+}

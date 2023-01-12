@@ -9,6 +9,8 @@ const i18n = createI18n({
   // something vue-i18n options here ...
 })
 
+import "@/assets/css/main.css"
+
 const app = createApp(App)
 
 app.use(createPinia())
