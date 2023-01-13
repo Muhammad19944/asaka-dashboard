@@ -13,6 +13,10 @@ import "@/assets/css/main.css"
 
 const app = createApp(App)
 
+import AppAvatar from "@/components/UI/AppAvatar.vue"
+
+app.component("AppAvatar", AppAvatar)
+
 app.use(createPinia())
 app.use(router)
 app.use(i18n)
