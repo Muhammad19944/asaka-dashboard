@@ -4,10 +4,10 @@
     bordered
     class="app-toolbar flex items-center h-14 py-1 px-6"
   >
-    <n-button @click="updateTheme(darkTheme)" type="primary">
+    <n-button @click="changeLang('dark')" type="primary">
       Dark
     </n-button>
-    <n-button @click="updateTheme(null)">
+    <n-button @click="changeLang(null)">
       Light
     </n-button>
 
@@ -19,10 +19,10 @@
 </template>
 
 <script setup>
-import { NLayoutHeader, NButton, darkTheme } from "naive-ui"
-import { ref, inject } from "vue"
+import { NLayoutHeader, NButton } from "naive-ui"
+import { ref } from "vue"
+import useAppConfigStore from "@/stores/modules/app-config"
 
-const { theme, updateTheme } = inject('theme')
 const inverted = ref(false)
-
+const { changeLang } = useAppConfigStore()
 </script>
