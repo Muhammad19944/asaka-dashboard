@@ -7,7 +7,7 @@ const useAppConfigStore = defineStore("app-config", {
         appConfigSettings
     }),
     actions: {
-        changeLang(payload) {
+        changeTheme(payload) {
             this.appConfigSettings.theme = payload
         }
     }

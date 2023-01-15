@@ -4,25 +4,20 @@
     bordered
     class="app-toolbar flex items-center h-14 py-1 px-6"
   >
-    <n-button @click="changeLang('dark')" type="primary">
-      Dark
-    </n-button>
-    <n-button @click="changeLang(null)">
-      Light
-    </n-button>
 
-    <app-avatar
+  <switch-theme />
+
+    <!-- <app-avatar
       color="#ff2200"
       :size="34"
-    />
+    /> -->
   </n-layout-header>
 </template>
 
 <script setup>
-import { NLayoutHeader, NButton } from "naive-ui"
+import { NLayoutHeader } from "naive-ui"
 import { ref } from "vue"
-import useAppConfigStore from "@/stores/modules/app-config"
+import SwitchTheme from "./SwitchTheme.vue"
 
 const inverted = ref(false)
-const { changeLang } = useAppConfigStore()
 </script>
