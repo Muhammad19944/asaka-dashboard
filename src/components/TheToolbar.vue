@@ -4,8 +4,11 @@
     bordered
     class="app-toolbar flex items-center h-14 py-1 px-6"
   >
-
-  <switch-theme />
+    <n-space justify="end" class="w-full">
+      <switch-language />
+      
+      <switch-theme class="ml-2" />
+    </n-space>
 
     <!-- <app-avatar
       color="#ff2200"
@@ -15,9 +18,10 @@
 </template>
 
 <script setup>
-import { NLayoutHeader } from "naive-ui"
+import { NLayoutHeader, NSpace } from "naive-ui"
 import { ref } from "vue"
 import SwitchTheme from "./SwitchTheme.vue"
+import SwitchLanguage from "./SwitchLanguage.vue"
 
 const inverted = ref(false)
 </script>
