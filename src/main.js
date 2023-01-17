@@ -1,13 +1,9 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import { createI18n } from "vue-i18n"
+import { setupI18n } from "@/i18n";
 
 import App from './App.vue'
 import router from './router'
-
-const i18n = createI18n({
-  // something vue-i18n options here ...
-})
 
 import "@/assets/css/main.css"
 
@@ -19,6 +15,6 @@ app.component("AppAvatar", AppAvatar)
 
 app.use(createPinia())
 app.use(router)
-app.use(i18n)
+app.use(setupI18n())
 
 app.mount('#app')

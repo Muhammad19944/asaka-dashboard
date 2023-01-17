@@ -1,5 +1,12 @@
 <template>
   <div class="switch-language">
+    <div class="locale-changer">
+      <select v-model="$root.$i18n.locale">
+        <option v-for="locale in ['uz', 'ru']" :key="`locale-${locale}`" :value="locale">{{ locale }}</option>
+      </select>
+      {{ $root.$i18n.locale }}
+    </div>
+
     <n-dropdown
       placement="bottom"
       trigger="click"
@@ -12,7 +19,7 @@
         <template #icon>
           <n-icon :component="LanguageOutline" />
         </template>
-        
+
         <span class="ml-1">English</span>
       </n-button>
     </n-dropdown>
@@ -20,10 +27,8 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
 import { NDropdown, NButton, NIcon } from 'naive-ui'
 import { LanguageOutline } from "@vicons/ionicons5"
-import { setupI18n } from "@/i18n"
 
 const options = [
   {
@@ -39,8 +44,4 @@ const options = [
 function handleSelect(value) {
   console.log(value)
 }
-
-onMounted(() => {
-  setupI18n()
-})
 </script>

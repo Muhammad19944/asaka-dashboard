@@ -2,6 +2,8 @@
   <n-config-provider
     :theme-overrides="themeOverrides"
     :theme="appTheme === DARK ? darkTheme : null"
+    :locale="ruRU"
+    :date-locale="dateRuRU"
   >
     <n-dialog-provider>
       <n-notification-provider>
@@ -17,7 +19,7 @@
 
 <script setup>
 import { computed } from "vue"
-import { NConfigProvider, NGlobalStyle, NDialogProvider, NNotificationProvider, NMessageProvider, darkTheme } from "naive-ui"
+import { NConfigProvider, NGlobalStyle, NDialogProvider, NNotificationProvider, NMessageProvider, darkTheme, ruRU, dateRuRU } from "naive-ui"
 import { DARK } from "@/enums/theme"
 import useAppConfigStore from "@/stores/modules/app-config"
 import themeConfigSettings from "@/stores/modules/theme-config"

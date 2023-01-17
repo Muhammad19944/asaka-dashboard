@@ -1,10 +1,22 @@
 import { nextTick } from 'vue'
 import { createI18n } from 'vue-i18n'
+import ru from "./locales/ru.json"
+import uz from "./locales/uz.json"
 
-export const SUPPORT_LOCALES = ['uz', 'ru']
+export const SUPPORT_LOCALES = ["uz", "ru"]
+export const CURRENT_LOCALE = "ru"
 
-export function setupI18n(options = { locale: 'ru' }) {
-  const i18n = createI18n(options)
+export function setupI18n(options = { locale: CURRENT_LOCALE }) {
+  const i18n = createI18n({
+    ...options,
+    legacy: false,
+    fallbackLocale: CURRENT_LOCALE,
+    formatFallbackMessages: true,
+    missingWarn: false,
+    fallbackWarn: false,
+    messages: { ru, uz },
+    allowComposition: true
+  })
   setI18nLanguage(i18n, options.locale)
   return i18n
 }
@@ -23,16 +35,4 @@ export function setI18nLanguage(i18n, locale) {
    * axios.defaults.headers.common['Accept-Language'] = locale
    */
   document.querySelector('html').setAttribute('lang', locale)
-}
-
-export async function loadLocaleMessages(i18n, locale) {
-  // load locale messages with dynamic import
-  const messages = await import(
-    /* webpackChunkName: "locale-[request]" */ `./locales/${locale}.json`
-    )
-
-  // set locale and locale message
-  i18n.global.setLocaleMessage(locale, messages.default)
-
-  return nextTick()
 }
