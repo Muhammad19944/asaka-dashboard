@@ -1,47 +1,46 @@
 <template>
   <div class="switch-language">
-    <div class="locale-changer">
-      <select v-model="$root.$i18n.locale">
-        <option v-for="locale in ['uz', 'ru']" :key="`locale-${locale}`" :value="locale">{{ locale }}</option>
-      </select>
-      {{ $root.$i18n.locale }}
-    </div>
-
     <n-dropdown
       placement="bottom"
       trigger="click"
       size="medium"
       show-arrow
-      :options="options"
-      @select="handleSelect"
+      :options="AVAILABLE_LOCALES"
+      @select="(value) => changeLocale(value)"
     >
       <n-button size="small" text>
         <template #icon>
           <n-icon :component="LanguageOutline" />
         </template>
 
-        <span class="ml-1">English</span>
+        <span class="ml-1">{{ currentLang.label }}</span>
       </n-button>
     </n-dropdown>
   </div>
 </template>
 
 <script setup>
+import { computed } from "vue";
+import { useRouter } from "vue-router"
 import { NDropdown, NButton, NIcon } from 'naive-ui'
 import { LanguageOutline } from "@vicons/ionicons5"
+import { useI18n } from "vue-i18n"
+import { CURRENT_LOCALE, AVAILABLE_LOCALES } from "@/i18n"
 
-const options = [
-  {
-    label: "Jay Gatsby",
-    key: "jay gatsby"
-  },
-  {
-    label: "Daisy Buchanan",
-    key: "daisy buchanan"
-  },
-]
+let { locale } = useI18n()
+let router = useRouter()
 
-function handleSelect(value) {
-  console.log(value)
+const setCurrentLang = (lang) => AVAILABLE_LOCALES.find(locale => locale.key === lang)
+let currentLang = computed(() => setCurrentLang(CURRENT_LOCALE))
+
+function changeLocale(value) {
+  locale.value = value
+  currentLang = computed(() => setCurrentLang(value))
+
+  router.replace({
+    params: {
+      locale: value
+    }
+  })
 }
 </script>

@@ -5,11 +5,22 @@ import uz from "./locales/uz.json"
 
 export const SUPPORT_LOCALES = ["uz", "ru"]
 export const CURRENT_LOCALE = "ru"
+export const AVAILABLE_LOCALES = [
+  {
+    label: "Русский",
+    key: "ru"
+  },
+  {
+    label: "O'zbek",
+    key: "uz"
+  },
+]
 
 export function setupI18n(options = { locale: CURRENT_LOCALE }) {
   const i18n = createI18n({
     ...options,
     legacy: false,
+    globalInjection: true,
     fallbackLocale: CURRENT_LOCALE,
     formatFallbackMessages: true,
     missingWarn: false,
