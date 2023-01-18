@@ -27,16 +27,6 @@ const menuOptions = [
   {
     label: 'Hear the Wind Sing',
     key: 'hear-the-wind-sing',
-  },
-  {
-    label: 'Pinball 1973',
-    key: 'pinball-1973',
-    children: [
-      {
-        label: 'Rat',
-        key: 'rat'
-      }
-    ]
-  },
+  }
 ]
 </script>

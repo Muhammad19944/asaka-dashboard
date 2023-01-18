@@ -46,6 +46,4 @@ function changeLocale(value) {
     }
   })
 }
-
-console.log(getStorageItem(LANG) || CURRENT_LOCALE)
 </script>
