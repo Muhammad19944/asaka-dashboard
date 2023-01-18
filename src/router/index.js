@@ -20,6 +20,11 @@ const router = createRouter({
               path: "dashboard",
               name: "Dashboard",
               component: () => import("@/views/Dashboard.vue")
+            },
+            {
+              path: "add-menu",
+              name: "OtherSectionAddMenu",
+              component: () => import("@/views/OtherSections/AddMenu/List.vue")
             }
           ]
         },

@@ -31,6 +31,4 @@ import SwitchLanguage from "./SwitchLanguage.vue"
 import themeConfig from "@/settings/theme-config"
 
 const inverted = ref(false)
-
-console.log(themeConfig.common.primaryColor)
 </script>
