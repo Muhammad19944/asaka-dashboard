@@ -22,20 +22,23 @@
 <script setup>
 import { computed } from "vue";
 import { useRouter } from "vue-router"
-import { NDropdown, NButton, NIcon } from 'naive-ui'
+import { NDropdown, NButton, NIcon } from "naive-ui"
 import { LanguageOutline } from "@vicons/ionicons5"
 import { useI18n } from "vue-i18n"
 import { CURRENT_LOCALE, AVAILABLE_LOCALES } from "@/i18n"
+import { saveStorageItem, getStorageItem } from "@/utils/storage"
+import { LANG } from "@/enums/storage"
 
 let { locale } = useI18n()
 let router = useRouter()
 
 const setCurrentLang = (lang) => AVAILABLE_LOCALES.find(locale => locale.key === lang)
-let currentLang = computed(() => setCurrentLang(CURRENT_LOCALE))
+let currentLang = computed(() => setCurrentLang(getStorageItem(LANG) || CURRENT_LOCALE))
 
 function changeLocale(value) {
   locale.value = value
   currentLang = computed(() => setCurrentLang(value))
+	saveStorageItem(LANG, value)
 
   router.replace({
     params: {
@@ -43,4 +46,6 @@ function changeLocale(value) {
     }
   })
 }
+
+console.log(getStorageItem(LANG) || CURRENT_LOCALE)
 </script>

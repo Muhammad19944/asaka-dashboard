@@ -1,7 +1,8 @@
-import { nextTick } from 'vue'
 import { createI18n } from 'vue-i18n'
 import ru from "./locales/ru.json"
 import uz from "./locales/uz.json"
+import { getStorageItem } from "@/utils/storage"
+import { LANG } from "@/enums/storage"
 
 export const SUPPORT_LOCALES = ["uz", "ru"]
 export const CURRENT_LOCALE = "ru"
@@ -16,7 +17,7 @@ export const AVAILABLE_LOCALES = [
   },
 ]
 
-export function setupI18n(options = { locale: CURRENT_LOCALE }) {
+export function setupI18n(options = { locale: getStorageItem(LANG) || CURRENT_LOCALE }) {
   const i18n = createI18n({
     ...options,
     legacy: false,
