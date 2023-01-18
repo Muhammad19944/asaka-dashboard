@@ -1,7 +1,8 @@
 
 const themeConfig = {
     common: {
-        fontFamily: "Acrom-Regular"
+        fontFamily: "Acrom-Regular",
+        primaryColor: "#63e2b7"
     }
 }
 

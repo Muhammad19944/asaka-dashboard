@@ -1,14 +1,19 @@
 <template>
-  <div class="flex items-center">
+  <div class="flex items-end">
     <n-avatar
       :round="props.round"
       :size="props.size"
       :color="props.color"
-    />
+    >
+      <span class="font-regular">{{ name[0] }}</span>
+    </n-avatar>
 
-    <slot v-if="$slots.info" name="info">
-      <div>123</div>
-    </slot>
+    <template v-if="hasInfo">
+      <div class="ml-2 text-xs font-medium">
+        <p class="leading-4">Muhammad</p>
+        <span class="text-[10px] text-gray-400">Пользователь</span>
+      </div>
+    </template>
   </div>
 </template>
 
@@ -27,6 +32,14 @@ const props = defineProps({
   color: {
     type: String,
     default: "var(--n-color)"
+  },
+  name: {
+		type: String,
+    default: "Default"
+  },
+  hasInfo: {
+		type: Boolean,
+    default: false
   }
 })
 </script>
