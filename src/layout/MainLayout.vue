@@ -8,7 +8,7 @@
           <the-toolbar />
 
           <n-layout-content class="disable-layout-content-overflow">
-            <router-view class="app-router-view py-3 pl-6 overflow-x-auto" />
+            <router-view class="app-router-view py-3 px-4 overflow-x-auto" />
           </n-layout-content>
         </n-layout>
       </n-layout>
