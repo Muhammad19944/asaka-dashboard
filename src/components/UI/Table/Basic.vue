@@ -1,7 +1,7 @@
 <template>
   <div class="basic-table">
     <div class="table-header flex items-center justify-between mb-5">
-      <h1 v-if="props.hasTitle">{{ props.title }}</h1>
+      <h1 v-if="props.hasTitle">{{ props.headerTitle }}</h1>
 
       <div class="header-toolbar">
         <router-link
@@ -40,8 +40,8 @@ import { usePagination } from "@/composables/useTable"
 const pagination = usePagination()
 
 const props = defineProps({
-	...NDataTable.props,
-	title: {
+  ...NDataTable.props,
+	headerTitle: {
 		type: String,
 		default: null
 	},

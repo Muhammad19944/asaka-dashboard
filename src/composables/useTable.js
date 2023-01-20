@@ -39,3 +39,5 @@ export const usePagination = () => {
 
 	return options
 }
+
+export const useTableHeight = (parentElement) => parentElement.$el.clientHeight - 160
